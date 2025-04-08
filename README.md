@@ -1,27 +1,7 @@
-JT65/JT9/JT4/FT8/WSPR/FSQ Encoder Library for Arduino
+JT65/JT9/JT4/FT8/WSPR/FSQ Encoder Library for C++
 =====================================================
 
-This library very simply generates a set of channel symbols for JT65, JT9, JT4, FT8, or WSPR based on the user providing a properly formatted Type 6 message for JT65, JT9, or JT4 (which is 13 valid characters), Type 0.0 or 0.5 message for FT8 (v2.0.0 protocol) or a Type 1, Type 2, or Type 3 message for WSPR. It will also generate an arbitrary FSQ message of up to 200 characters in both directed and non-directed format. When paired with a synthesizer that can output frequencies in fine, phase-continuous tuning steps (such as the Si5351), then a beacon or telemetry transmitter can be created which can change the transmitted characters as needed from the Arduino.
-
-Please feel free to use the issues feature of GitHub if you run into problems or have suggestions for important features to implement.
-
-Thanks For Your Support!
-------------------------
-If you would like to support my library development efforts, I would ask that you please consider sending a [one-time PayPal tip](https://paypal.me/NT7S) or [subscribe to me on SubscribeStar](https://www.subscribestar.com/nt7s) for an ongoing contribution.. Thank you!
-
-Hardware Requirements and Setup
--------------------------------
-This library has been written for the Arduino platform and has been successfully tested on the Arduino Uno, an Uno clone, an Arduino Zero clone, and a NodeMCU. Since the library itself does not access the hardware, there is no reason it should not run on any Arduino model of recent vintage as long as it has at least 2 kB of RAM.
-
-How To Install
---------------
-The best way to install the library is via the Arduino Library Manager, which is available if you are using Arduino IDE version 1.6.2 or greater. To install it this way, simply go to the menu Sketch > Include Library > Manage Libraries..., and then in the search box at the upper-right, type "Etherkit JTEncode". Click on the entry in the list below, then click on the provided "Install" button. By installing the library this way, you will always have notifications of future library updates, and can easily switch between library versions.
-
-If you need to or would like to install the library in the old way, then you can download a copy of the library in a ZIP file. Download a ZIP file of the library from the GitHub repository by going to [this page](https://github.com/etherkit/JTEncode/releases) and clicking the "Source code (zip)" link under the latest release. Finally, open the Arduino IDE, select menu Sketch > Import Library... > Add Library..., and select the ZIP that you just downloaded.
-
-RAM Usage
----------
-Most of the encoding functions need to manipulate multiple arrays of symbols in RAM at the same time, and therefore are quite RAM intensive. Care has been taken to put as much data into program memory as is possible, but the encoding functions still can cause problems with the low RAM microcontrollers such as the ATmegaxx8 series. If you are using these, then please be sure to call them only once when a transmit buffer needs to be created or changed, and call them separately of other subroutine calls. When using other microcontrollers that have more RAM, such as most of the ARM ICs, this won't be as much of a problem. If you see unusual freezes, that almost certainly indicates a RAM shortage.
+This library very simply generates a set of channel symbols for JT65, JT9, JT4, FT8, or WSPR based on the user providing a properly formatted Type 6 message for JT65, JT9, or JT4 (which is 13 valid characters), Type 0.0 or 0.5 message for FT8 (v2.0.0 protocol) or a Type 1, Type 2, or Type 3 message for WSPR. It will also generate an arbitrary FSQ message of up to 200 characters in both directed and non-directed format.
 
 WSPR Messages
 -------------
@@ -39,11 +19,8 @@ Type 2 messages can be sent in JTEncode simply by including the slashed prefix o
 
 Example
 -------
-There is a simple example that is placed in your examples menu under JTEncode. Open this to see how to incorporate this library with your code. The example provided with with the library is meant to be used in conjunction with the [Etherkit Si5351A Breakout Board](https://www.etherkit.com/rf-modules/si5351a-breakout-board.html), although it could be modified to use with other synthesizers which meet the technical requirements of the JT65/JT9/JT4/WSPR/FSQ modes.
 
-To run this example, be sure to download the [Si5351Arduino](https://github.com/etherkit/Si5351Arduino) library and follow the instructions there to connect the Si5351A Breakout Board to your Arduino. In order to trigger transmissions, you will also need to connect a momentary pushbutton from pin 12 of the Arduino to ground.
-
-The example sketch itself is fairly straightforward. JT65, JT9, JT4, FT8, WSPR, and FSQ modes are modulated in same way: phase-continuous multiple-frequency shift keying (MFSK). The message to be transmitted is passed to the JTEncode method corresponding to the desired mode, along with a pointer to an array which holds the returned channel symbols. When the pushbutton is pushed, the sketch then transmits each channel symbol sequentially as an offset from the base frequency given in the sketch define section.
+The message to be transmitted is passed to the JTEncode method corresponding to the desired mode, along with a pointer to an array which holds the returned channel symbols.
 
 An instance of the JTEncode object is created:
 
@@ -144,8 +121,7 @@ Once the channel symbols have been generated, it is a simple matter of transmitt
     // Now transmit the channel symbols
     for(i = 0; i < symbol_count; i++)
     {
-        si5351.set_freq((freq * 100) + (tx_buffer[i] * tone_spacing), SI5351_CLK0);
-        delay(tone_delay);
+        // Do something with the symbol
     }
 
 Public Methods
@@ -287,59 +263,12 @@ Defines:
 
 Acknowledgements
 ----------------
-Many thanks to Joe Taylor K1JT for his innovative work in amateur radio. We are lucky to have him. The algorithms in this program were derived from the source code in the [WSJT-X](https://sourceforge.net/p/wsjt/) suite of applications. Also, many thanks for Andy Talbot G4JNT for [his paper](http://www.g4jnt.com/JTModesBcns.htm) on the WSPR coding protocol, which helped me to understand the WSPR encoding process, which in turn helped me to understand the related JT protocols.
 
-Also, a big thank you to Murray Greenman, ZL1BPU for working allowing me to pick his brain regarding his neat new mode FSQ.
+JTEncode was originally developed and released by Jason Milldrum, [NT7S](https://github.com/NT7S) in his [JTEncode](https://github.com/etherkit/JTEncode) Arduino library.  It was Arduino-centric, and having earned my own scars coding for an Uno, I can appreciate his tenacity working in a resource-constrained environment.
 
-Changelog
----------
-* v1.3.1
+I've un-Arduino'd this code to use in modern C++ applications, and I hope I never have to worry about coding within the constraints of the ATmega328P again.
 
-    * Added latitude/longitude to Maidenhead grid convenience function
-
-* v1.3.0
-
-    * WSPR Type 2 and Type 3 message capability added
-
-* v1.2.1
-
-    * Fix keywords.txt
-    
-* v1.2.0
-
-    * Add support for FT8 protocol (79 symbol version introduced December 2018)
-
-* v1.1.3
-
-    * Add support for ESP8266
-    * Fix WSPR regression in last release
-
-* v1.1.2
-
-    * Fix buffer bug in _jt_message_prep()_ that caused messages of 11 chars to lock up the processor
-    * Made a handful of changes to make the library more friendly to ATmegaxx8 processors
-    * Rewrote example sketch to be generically compatible with most Arduino platforms
-
-* v1.1.1
-
-    * Update example sketch for Si5351Arduino v2.0.0
-
-* v1.1.0
-
-    * Added FSQ
-
-* v1.0.1
-
-    * Fixed a bug in _jt65_interleave()_ that was causing a buffer overrun.
-
-* v1.0.0
-
-    * Initial Release
-
-Arduino Lint Status
--------------------
-[![arduino-lint Actions Status](https://github.com/etherkit/JTEncode/workflows/arduino-lint/badge.svg)](https://github.com/etherkit/JTEncode/actions)
-
+Many thanks to  for his innovative work in amateur radio. We are lucky to have him. The algorithms in this program were derived from the Joe Taylor K1JT's source code in the [WSJT-X](https://sourceforge.net/p/wsjt/) suite of applications.
 
 License
 -------

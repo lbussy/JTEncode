@@ -1,11 +1,12 @@
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 #ifndef NHASH_H_
 #define NHASH_H_
 
-uint32_t nhash_( const void *, int *, uint32_t *);
+    uint32_t nhash_(const void *, int *, uint32_t *);
 
 #endif
 

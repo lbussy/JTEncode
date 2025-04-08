@@ -5,7 +5,7 @@ DEBUG := -DDEBUG_WSPR_TRANSMIT
 # C++ Version
 CXXVER := 17
 # Prefix for executing tests, "sudo" if required
-SUDO := sudo
+SUDO := #sudo
 
 # Get project name from Git, revert to directory name
 #
@@ -62,7 +62,8 @@ MAKEFLAGS := -j$(nproc)
 # Compiler Flags
 #
 # Common flags for both C and C++ compilers
-COMMON_FLAGS := -MMD -MP #-Wall -Werror -fmax-errors=10 
+COMMON_FLAGS := -MMD -MP
+# COMMON_FLAGS += -Wall -Werror -fmax-errors=10
 
 # C Flags
 CFLAGS := $(COMMON_FLAGS)
@@ -80,9 +81,9 @@ CXXFLAGS += -I$(abspath .)
 # CXXFLAGS += -I$(abspath ./INI-Handler/src)
 # CXXFLAGS += -I$(abspath ./LCBLog/src)
 # CXXFLAGS += -I$(abspath ./MonitorFile/src)
-CXXFLAGS += -I$(abspath ./WSPR-Message/src)
+# CXXFLAGS += -I$(abspath ./WSPR-Message/src)
 # CXXFLAGS += -I$(abspath ./Singleton/src)
-CXXFLAGS += -I$(abspath ./Broadcom-Mailbox/src)
+# CXXFLAGS += -I$(abspath ./Broadcom-Mailbox/src)
 # CXXFLAGS += -I$(abspath ./PPM-Manager/src)
 # CXXFLAGS += -I$(abspath ./Signal-Handler/src)
 

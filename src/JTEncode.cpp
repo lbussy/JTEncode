@@ -23,14 +23,13 @@
 
 #include <cstring>
 #include <iostream>
-
 #include <string>
 #include <sstream>
 
-#include <JTEncode.h>
-#include <crc14.h>
-#include <generator.h>
-#include <nhash.h>
+#include "JTEncode.h"
+#include "crc14.h"
+#include "generator.h"
+#include "nhash.h"
 
 #include <string.h>
 #include <ctype.h>

@@ -6,10 +6,11 @@
  * Slightly modified by Jason Milldrum NT7S, 2015 to fit into the Arduino framework
  */
 
+#include "JTEncode.h"
+#include "rs_common.h"
+
 #include <string.h>
 #include <stdlib.h>
-#include <JTEncode.h>
-#include "rs_common.h"
 
 void JTEncode::free_rs_int(void *p)
 {

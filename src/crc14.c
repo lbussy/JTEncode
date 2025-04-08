@@ -13,7 +13,9 @@
  *  - ReflectOut    = Undefined
  *  - Algorithm     = bit-by-bit
  */
+
 #include "crc14.h" /* include the header file generated with pycrc */
+
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
