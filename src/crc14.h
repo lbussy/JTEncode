@@ -1,5 +1,4 @@
-/**
- * \file
+/*
  * Functions and types for CRC checks.
  *
  * Generated on Thu Dec  6 17:52:01 2018
@@ -43,6 +42,7 @@
  * crc = crc_finalize(&cfg, crc);
  * \endcode
  */
+
 #ifndef CRC14_H
 #define CRC14_H
 
