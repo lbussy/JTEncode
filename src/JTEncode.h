@@ -1,11 +1,10 @@
 /*
- * JTEncode.h - JT65/JT9/WSPR/FSQ encoder library for Arduino
+ * JTEncode.h - JT65/JT9/WSPR/FSQ encoder library for C/C++
  *
+ * Copyright (C) 2025 Lee C. Bussy (@lbussy)
+ *
+ * Original Arduino Library:
  * Copyright (C) 2015-2021 Jason Milldrum <milldrum@gmail.com>
- *
- * Based on the algorithms presented in the WSJT software suite.
- * Thanks to Andy Talbot G4JNT for the whitepaper on the WSPR encoding
- * process that helped me to understand all of this.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,8 +16,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * See the [full license](http://www.gnu.org/licenses/) in this repo.
  */
 
 #ifndef JTENCODE_H

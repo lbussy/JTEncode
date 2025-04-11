@@ -1,38 +1,44 @@
-//
-// Simple JT65/JT9/JT4/FT8/WSPR/FSQ beacon for Arduino, with the Etherkit
-// Si5351A Breakout Board, by Jason Milldrum NT7S.
-//
-// Transmit an abritrary message of up to 13 valid characters
-// (a Type 6 message) in JT65, JT9, JT4, a type 0.0 or type 0.5 FT8 message,
-// a FSQ message, or a standard Type 1 message in WSPR.
-//
-// Connect a momentary push button to pin 12 to use as the
-// transmit trigger. Get fancy by adding your own code to trigger
-// off of the time from a GPS or your PC via virtual serial.
-//
-// Original code based on Feld Hell beacon for Arduino by Mark
-// Vandewettering K6HX, adapted for the Si5351A by Robert
-// Liesenfeld AK6L <ak6l@ak6l.org>.
-//
-// Permission is hereby granted, free of charge, to any person obtaining
-// a copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to
-// permit persons to whom the Software is furnished to do so, subject
-// to the following conditions:
-//
-// The above copyright notice and this permission notice shall be
-// included in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
-// ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
-// CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
+/*
+ * This was from the original Arduino library and is only included as an
+ * example of other methods to code, it will not work with this C/C++
+ * library version.
+ */
+
+/* 
+ * Simple JT65/JT9/JT4/FT8/WSPR/FSQ beacon for Arduino, with the Etherkit
+ * Si5351A Breakout Board, by Jason Milldrum NT7S.
+ * 
+ * Transmit an abritrary message of up to 13 valid characters
+ * (a Type 6 message) in JT65, JT9, JT4, a type 0.0 or type 0.5 FT8 message,
+ * a FSQ message, or a standard Type 1 message in WSPR.
+ * 
+ * Connect a momentary push button to pin 12 to use as the
+ * transmit trigger. Get fancy by adding your own code to trigger
+ * off of the time from a GPS or your PC via virtual serial.
+ * 
+ * Original code based on Feld Hell beacon for Arduino by Mark
+ * Vandewettering K6HX, adapted for the Si5351A by Robert
+ * Liesenfeld AK6L <ak6l@ak6l.org>.
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject
+ * to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
+ * ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 
 #include <si5351.h>
 #include <JTEncode.h>

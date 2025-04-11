@@ -1,5 +1,4 @@
 /**
- * \file
  * Functions and types for CRC checks.
  *
  * Generated on Thu Dec  6 17:52:34 2018
